@@ -1,0 +1,3 @@
+<?
+class VehicleBaseModel extends WildfireContent{}
+?>
