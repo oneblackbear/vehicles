@@ -1,5 +1,4 @@
 <?
-CMSApplication::register_module("auth", array("display_name"=>"Authorisation", "link"=>"/admin/auth/", 'split'=>true));
 CMSApplication::register_module("brand", array("display_name"=>"Brands", "link"=>"/admin/brand/"));
 CMSApplication::register_module("model", array("display_name"=>"Models", "link"=>"/admin/model/"));
 CMSApplication::register_module("derivative", array("display_name"=>"Derivatives", "link"=>"/admin/derivative/", 'split'=>true));
