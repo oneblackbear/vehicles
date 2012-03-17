@@ -11,6 +11,7 @@ class InformationItem extends WaxModel{
     //this is so any piece of info can have images etc to go with it
     //planned to be used to derivative->detail(colour)->image
     $this->define("media", "ManyToManyField", array('target_model'=>"WildfireMedia", "eager_loading"=>true, "join_model_class"=>"WildfireOrderedTagJoin", "join_order"=>"join_order", 'group'=>'media'));
+    $this->define("featured", "BooleanField");
     parent::setup();
   }
 
