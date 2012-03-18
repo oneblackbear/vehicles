@@ -12,11 +12,13 @@ class InformationItem extends WaxModel{
     //planned to be used to derivative->detail(colour)->image
     $this->define("media", "ManyToManyField", array('target_model'=>"WildfireMedia", "eager_loading"=>true, "join_model_class"=>"WildfireOrderedTagJoin", "join_order"=>"join_order", 'group'=>'media'));
     $this->define("featured", "BooleanField");
+    $this->define("url", "CharField", array('editable'=>false));
     parent::setup();
   }
 
   public function before_save(){
     if(!$this->title) $this->title = "ITEM";
+    if($this->title != "ITEM" && !$this->url) $this->url = Inflections::to_url($this->title);;
     if($this->columns['content']) $this->content =  CmsTextFilter::filter("before_save", $this->content);
   }
 
