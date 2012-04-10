@@ -18,5 +18,9 @@ class VehicleBaseModel extends WildfireContent{
     $col_names = array_keys($this->get_keys($top_level, $stack));
     return $col_names;
   }
+
+  public function css_selector(){
+    return str_replace("/", "-", Inflections::to_url(strip_tags($this->title), "/"));
+  }
 }
 ?>
