@@ -4,6 +4,8 @@ class AdminInformationgroupController extends AdminComponent{
   public $model_class = 'InformationGroup';
   public $display_name = "Information Groups";
   public $dashboard = false;
+  public $sortable = false;
+  public $sort_scope = "live";
   public $tree_layout = false;
   public $filter_fields=array(
                           'text' => array('columns'=>array('title', 'internal_title'), 'partial'=>'_filters_text', 'fuzzy'=>true),
