@@ -13,6 +13,7 @@ class InformationItem extends WaxModel{
     $this->define("media", "ManyToManyField", array('target_model'=>"WildfireMedia", "eager_loading"=>true, "join_model_class"=>"WildfireOrderedTagJoin", "join_order"=>"join_order", 'group'=>'media'));
     $this->define("featured", "BooleanField");
     $this->define("url", "CharField", array('editable'=>false));
+    $this->define("sort", "IntegerField", array('maxlength'=>3, 'default'=>0, 'widget'=>"HiddenInput", 'group'=>'parent'));
     parent::setup();
   }
 
