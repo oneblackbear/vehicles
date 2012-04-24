@@ -2,6 +2,11 @@
 class VehicleBaseModel extends WildfireContent{
   public $unset_from_top = array();
 
+  public function setup(){
+    parent::setup();
+    $this->columns['status'][1]['group'] = 'status';
+    $this->columns['status'][1]['editable'] = true;
+  }
 
   public function get_keys($top_level=false, $called_stack=array()){
     $keys = $this->columns;
