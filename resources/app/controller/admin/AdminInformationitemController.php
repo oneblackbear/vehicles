@@ -5,7 +5,7 @@ class AdminInformationitemController extends AdminComponent{
   public $display_name = "Information Items";
   public $dashboard = false;
   public $tree_layout = false;
-  public $sortable = false;
+  public $sortable = true;
   public $sort_scope = "live";
   public $filter_fields=array(
                           'text' => array('columns'=>array('title', 'value'), 'partial'=>'_filters_text', 'fuzzy'=>true),
