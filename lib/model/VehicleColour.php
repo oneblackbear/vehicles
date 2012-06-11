@@ -30,11 +30,13 @@ class VehicleColour extends WaxModel{
   
   public function images($type="front") {
     if(!count($this->derivatives)) return FALSE;
-    $model_url = $this->derivatives[0]->model->url;
+    $model_url = $this->derivatives[0]->models[0]->url;
     $der_url =  $this->derivatives[0]->url;
     $folder = $type."_folder";
-    return scandir($model_url."/".$der_url."/".$this->url."/".$this->$folder);
+    $files = preg_grep('/^([^.])/', scandir(PUBLIC_DIR.$this->base_url.$model_url."/".$der_url."/".$this->url."/".$this->$folder));
+    return $files;
   }
+  
   
   
 
