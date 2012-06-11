@@ -1,5 +1,5 @@
 <?php
-class AdminDerivativeController extends AdminComponent{
+class AdminColourController extends AdminComponent{
   public $module_name = "colour";
   public $model_class = 'VehicleColour';
   public $display_name = "Colours";
