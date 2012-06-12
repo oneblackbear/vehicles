@@ -27,7 +27,7 @@ class VehicleColourAsset {
     if(!$size) $size = 100; //default size
     $cache_file = PUBLIC_DIR.$this->get($size);
     if(!is_readable($dir)) mkdir($dir, 0777, true);
-    if(!is_readable($cache_file)) File::smart_resize_image(PUBLIC_DIR.$this->get($size), $cache_file, $size, false, "nocrop");
+    if(!is_readable($cache_file)) File::smart_resize_image(PUBLIC_DIR.$this->url, $cache_file, $size, false, "nocrop");
     File::display_image($cache_file);
   }
   //generates the tag to be displayed - return generic icon if not an image
