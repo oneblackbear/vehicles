@@ -2,7 +2,7 @@
 class VehicleColour extends WaxModel{
   
   public $identifier = "internal_title";
-  public $base_url = "files/range/";
+  public $base_url = "files/vehicles/";
   
 
   public function setup(){
@@ -18,7 +18,7 @@ class VehicleColour extends WaxModel{
 
     $this->define("url", "CharField", array('editable'=>false));
     $this->define("sort", "IntegerField", array('maxlength'=>3, 'default'=>0, 'widget'=>"HiddenInput", 'group'=>'advanced'));
-    $this->define("derivatives", "ManyToManyField", array('target_model'=>'Derivative', 'group'=>'relationships',"join_order"=>"sort"));
+    $this->define("derivatives", "ManyToManyField", array('target_model'=>'Derivative', 'group'=>'relationships'));
     
   }
   
