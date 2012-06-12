@@ -34,7 +34,11 @@ class VehicleColour extends WaxModel{
     $der_url =  $this->derivatives[0]->url;
     $folder = $type."_folder";
     $files = preg_grep('/^([^.])/', scandir(PUBLIC_DIR.$this->base_url.$model_url."/".$der_url."/".$this->url."/".$this->$folder));
-    return $files;
+    $file_objects = array();
+    foreach($files as $file) {
+      $file_objects[] = new VehicleColourAsset($file);
+    }
+    return $file_objects;
   }
   
   
