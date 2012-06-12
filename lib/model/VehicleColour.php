@@ -18,7 +18,7 @@ class VehicleColour extends WaxModel{
 
     $this->define("url", "CharField", array('editable'=>false));
     $this->define("sort", "IntegerField", array('maxlength'=>3, 'default'=>0, 'widget'=>"HiddenInput", 'group'=>'advanced'));
-    $this->define("derivatives", "ManyToManyField", array('target_model'=>'Derivative', 'group'=>'relationships'));
+    $this->define("derivatives", "ManyToManyField", array('target_model'=>'Derivative', 'group'=>'relationships',"join_order"=>"sort"));
     
   }
   
