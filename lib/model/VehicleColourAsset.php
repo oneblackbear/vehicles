@@ -18,7 +18,7 @@ class VehicleColourAsset {
   
   //should return a url to display the image
   public function get($size=false){
-    return "/".$this->controller_url."/".$this->dirname."/".$this->filename."_".$size.".".$this->extension;
+    return "/".$this->controller_url."/".$this->dirname."/".$this->filename."/".$size.".".$this->extension;
   }
   
   
