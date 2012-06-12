@@ -10,7 +10,7 @@ class ColourController extends WaxController{
 
     $extension = $path_parts['extension'];
     
-    die($dirname);
+    die($dirname.".".$extension);
   }
 
 
