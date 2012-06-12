@@ -6,7 +6,7 @@ class ColourController extends WaxController{
   public function method_missing(){
     $route = get("route");
     $path_parts = pathinfo($route);
-    $dirname = $path_parts['dirname'];
+    $dirname = ltrim($path_parts['dirname'],"colour/");
     $filename = $path_parts['filename'];
 
     $extension = $path_parts['extension'];
