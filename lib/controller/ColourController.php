@@ -7,10 +7,11 @@ class ColourController extends WaxController{
     $route = get("route");
     $path_parts = pathinfo($route);
     $dirname = $path_parts['dirname'];
+    $filename = $path_parts['filename'];
 
     $extension = $path_parts['extension'];
-    
-    die($dirname.".".$extension);
+    $asset = new VehicleColourAsset($dirname.".".$extension);
+    $asset->show($filename);
   }
 
 
