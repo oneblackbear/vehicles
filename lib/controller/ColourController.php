@@ -12,6 +12,7 @@ class ColourController extends WaxController{
     $extension = $path_parts['extension'];
     $asset = new VehicleColourAsset($dirname.".".$extension);
     $asset->show($filename);
+    exit;
   }
 
 
