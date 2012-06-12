@@ -2,7 +2,7 @@
 class VehicleColour extends WaxModel{
   
   public $identifier = "internal_title";
-  public $base_url = "files/vehicles/";
+  public $base_url = "files/range/";
   
 
   public function setup(){
