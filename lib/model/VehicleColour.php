@@ -37,7 +37,6 @@ class VehicleColour extends WaxModel{
       }
     }
     $model_url = $derivative->models[0]->url;
-    WaxLog::log("error", print_r($derivative->models, 1));
     $der_url =  $derivative->url;
     $folder = $type."_folder";
     WaxLog::log("error", "[SCANNING] ".PUBLIC_DIR.$this->base_url.$model_url."/".$der_url."/".$this->url."/".$this->$folder);
