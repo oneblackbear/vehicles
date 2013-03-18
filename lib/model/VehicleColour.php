@@ -39,6 +39,7 @@ class VehicleColour extends WaxModel{
     $model_url = $derivative->models[0]->url;
     $der_url =  $derivative->url;
     $folder = $type."_folder";
+    WaxLog::log("error", "[SCANNING] ".PUBLIC_DIR.$this->base_url.$model_url."/".$der_url."/".$this->url."/".$this->$folder);
     $files = preg_grep('/^([^.])/', scandir(PUBLIC_DIR.$this->base_url.$model_url."/".$der_url."/".$this->url."/".$this->$folder));
     $file_objects = array();
     foreach($files as $file) {
