@@ -28,8 +28,7 @@ class Derivative extends VehicleBaseModel{
    * the filters should look like
    * array( group_title => array( item_titles ), group_title => array( item_titles ), ... )
    */
-  public function get_data($groups_filter){
-    $data = array();
+  public function get_data($groups_filter, $data=array()){
     foreach($groups_filter as $group_filter=>$items_filter){
       if($group_filter) $details_filter = array("title"=>$group_filter);
       foreach($this->details($details_filter) as $group){
