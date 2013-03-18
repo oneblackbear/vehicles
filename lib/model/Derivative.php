@@ -21,10 +21,26 @@ class Derivative extends VehicleBaseModel{
     }
     if(!$this->url) $this->url = Inflections::to_url($this->title);;
     
-
   }
-  
-  
+
+  /*
+   * this loops over filters and fills data array with these
+   * the filters should look like
+   * array( group_title => array( item_titles ), group_title => array( item_titles ), ... )
+   */
+  public function get_data($groups_filter){
+    $data = array();
+    foreach($groups_filter as $group_filter=>$items_filter){
+      if($group_filter) $details_filter = array("title"=>$group_filter);
+      foreach($this->details($details_filter) as $group){
+        if($items_filter) $item_filter = array("title"=>$items_filter);
+        foreach($group->items($item_filter) as $item){
+          $data[$group->title][$item->title][$this->id] = $item->value;
+        }
+      }
+    }
+    return $data;
+  }
   
 
 }
