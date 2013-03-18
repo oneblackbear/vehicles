@@ -35,7 +35,7 @@ class Derivative extends VehicleBaseModel{
       foreach($this->details($details_filter) as $group){
         if($items_filter) $item_filter = array("title"=>$items_filter);
         foreach($group->items($item_filter) as $item){
-          $data[$group->title][$item->title][$this->id] = $item->value;
+          $data[$group->title][$item->title][$this->id] = $item;
         }
       }
     }
