@@ -12,6 +12,8 @@ class Derivative extends VehicleBaseModel{
     $this->define("details", "ManyToManyField", array('target_model'=>'InformationGroup', 'group'=>'relationships'));
     $this->define("accessories", "ManyToManyField", array('target_model'=>'Accessory', 'group'=>'relationships'));
     $this->define("colours", "ManyToManyField", array('target_model'=>'VehicleColour', 'group'=>'relationships'));
+
+    if(constant("CONTENT_MODEL")) $this->define("pages", "ManyToManyField", array('target_model'=>CONTENT_MODEL, 'group'=>'relationships'));
   }
 
   public function before_save(){
