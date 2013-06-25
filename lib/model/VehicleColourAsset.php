@@ -36,7 +36,9 @@ class VehicleColourAsset {
     return "<img src='".$this->get($size)."' alt='".$title."'>";
   }
   
-
+  public function permalink($width){
+    return $this->get($width);
+  }
 }
 
 
