@@ -6,4 +6,7 @@ CMSApplication::register_module("colour", array("display_name"=>"Colours", "link
 CMSApplication::register_module("informationgroup", array("display_name"=>"Information Groups", "link"=>"/admin/informationgroup/"));
 CMSApplication::register_module("informationitem", array("display_name"=>"Information Items", "link"=>"/admin/informationitem/", 'split'=>true));
 CMSApplication::register_module("accessory", array("display_name"=>"Accessories", "link"=>"/admin/accessory/", 'split'=>true));
+
+AutoLoader::register_controller_path("plugin", __DIR__."/lib/controller/");
+AutoLoader::register_controller_path("plugin", __DIR__."/resources/app/controller/");
 ?>
