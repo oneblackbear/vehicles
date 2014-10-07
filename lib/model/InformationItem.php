@@ -3,17 +3,17 @@ class InformationItem extends WaxModel{
 
   public $unset_from_top = array('Model'=>array('groups'), 'Brand'=>array('groups'), 'Derivative'=>array('groups'));
   public function setup(){
-    $this->define("title", "CharField", array('required'=>true, 'scaffold'=>true));
-    $this->define("value", "CharField", array('scaffold'=>true));
+    $this->define("title", "CharField", array('required'=>true, 'scaffold'=>true, 'group'=>'content', 'primary_group'=>1));
+    $this->define("value", "CharField", array('scaffold'=>true, 'group'=>'content', 'primary_group'=>1));
     $this->define("extra", "CharField"); //used for things like colours that need RGB & price
     $this->define("content", "TextField", array('widget'=>"TinymceTextareaInput"));
     $this->define("groups", "ManyToManyField", array('target_model'=>'InformationGroup', 'group'=>'relationships', 'scaffold'=>true));
     //this is so any piece of info can have images etc to go with it
     //planned to be used to derivative->detail(colour)->image
-    $this->define("media", "ManyToManyField", array('target_model'=>"WildfireMedia", "eager_loading"=>true, "join_model_class"=>"WildfireOrderedTagJoin", "join_order"=>"join_order", 'group'=>'media'));
+    $this->define("media", "ManyToManyField", array('target_model'=>"WildfireMedia", "eager_loading"=>true, "join_model_class"=>"WildfireOrderedTagJoin", "join_order"=>"join_order", 'group'=>'media', 'primary_group'=>1));
     $this->define("featured", "BooleanField");
     $this->define("url", "CharField", array('editable'=>false));
-    $this->define("sort", "IntegerField", array('maxlength'=>6, 'default'=>0, 'widget'=>"HiddenInput", 'group'=>'advanced'));
+    $this->define("sort", "IntegerField", array('maxlength'=>6, 'default'=>0, 'widget'=>"HiddenInput"));
     parent::setup();
   }
 
@@ -38,7 +38,7 @@ class InformationItem extends WaxModel{
     $model = new WaxModel;
     if($this->table < "wildfire_media") $model->table = $this->table."_wildfire_media";
     else $model->table = "wildfire_media_".$this->table;
-    
+
     $col = $this->table."_".$this->primary_key;
     if(!$order) $order = 0;
     if(($found = $model->filter($col, $this->primval)->filter("wildfire_media_id", $fileid)->all()) && $found->count()){
@@ -57,7 +57,7 @@ class InformationItem extends WaxModel{
     else $model->table = "wildfire_media_".$this->table;
     $col = $this->table."_".$this->primary_key;
     if($fileid) return $model->filter($col, $this->primval)->filter("wildfire_media_id", $fileid)->order('join_order ASC')->first();
-    elseif($tag=="all") return $model->filter($col, $this->primval)->order('join_order ASC')->all();    
+    elseif($tag=="all") return $model->filter($col, $this->primval)->order('join_order ASC')->all();
     elseif($tag) return $model->filter($col, $this->primval)->filter("tag", $tag)->order('join_order ASC')->all();
     else return false;
   }

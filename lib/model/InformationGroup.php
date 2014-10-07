@@ -5,7 +5,7 @@ class InformationGroup extends VehicleBaseModel{
   public $unset_from_top = array('Brand'=>array('derivatives'), 'Model'=>array('derivatives'), 'Derivative'=>array('derivatives'));
 
   public function setup(){
-    $this->define("internal_title", "CharField", array('required'=>true, 'scaffold'=>true, 'label'=>'Name (internal use only)'));
+    $this->define("internal_title", "CharField", array('required'=>true, 'scaffold'=>true, 'label'=>'Name (internal use only)', 'group'=>'content', 'primary_group'=>1));
     parent::setup();
     unset($this->columns['categories'], $this->columns['content'], $this->columns['excerpt']);
     $this->define("derivatives", "ManyToManyField", array('target_model'=>'Derivative', 'group'=>'relationships', 'scaffold'=>true));

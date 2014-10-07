@@ -4,9 +4,9 @@ class Derivative extends VehicleBaseModel{
   public $unset_from_top = array('Model'=>array('models'), 'Brand'=>array('models'));
   public function setup(){
     parent::setup();
-    $this->define("model_title", "CharField");
+    $this->define("model_title", "CharField", array('group'=>'content', 'primary_group'=>1));
     $this->define("url", "CharField", array('editable'=>false));
-    
+
     //link to the model
     $this->define("models", "ManyToManyField", array('target_model'=>'Model', 'group'=>'relationships', 'scaffold'=>true));
     $this->define("details", "ManyToManyField", array('target_model'=>'InformationGroup', 'group'=>'relationships'));
@@ -22,7 +22,7 @@ class Derivative extends VehicleBaseModel{
       if(($models = $this->models) && ($model = $models->first())) $this->model_title .= $model->title." ".$this->title;
     }
     if(!$this->url) $this->url = Inflections::to_url($this->title);;
-    
+
   }
 
   /*
@@ -42,7 +42,7 @@ class Derivative extends VehicleBaseModel{
     }
     return $data;
   }
-  
+
 
 }
 ?>

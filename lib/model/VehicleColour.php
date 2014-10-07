@@ -1,15 +1,15 @@
 <?php
 class VehicleColour extends WaxModel{
-  
+
   public $identifier = "internal_title";
   public $base_url = "files/range/";
-  
+
 
   public function setup(){
-    $this->define("title", "CharField", array('required'=>true, 'scaffold'=>true));
-    $this->define("internal_title", "CharField", array('required'=>true, 'scaffold'=>true));
-    $this->define("rgb_value", "CharField", array('scaffold'=>true));
-    $this->define("price_modifier", "CharField", array("default"=>"0"));
+    $this->define("title", "CharField", array('required'=>true, 'scaffold'=>true, 'group'=>'content', 'primary_group'=>1));
+    $this->define("internal_title", "CharField", array('required'=>true, 'scaffold'=>true, 'group'=>'content', 'primary_group'=>1));
+    $this->define("rgb_value", "CharField", array('scaffold'=>true, 'group'=>'content', 'primary_group'=>1));
+    $this->define("price_modifier", "CharField", array("default"=>"0", 'group'=>'content', 'primary_group'=>1));
     $this->define("base_image_folder", "CharField", array("group"=>"Folders"));
     $this->define("front_folder", "CharField", array("default"=>"Front","group"=>"Folders"));
     $this->define("side_folder", "CharField", array("default"=>"Side","group"=>"Folders"));
@@ -17,17 +17,17 @@ class VehicleColour extends WaxModel{
     $this->define("360_folder", "CharField", array("default"=>"360","group"=>"Folders"));
 
     $this->define("url", "CharField", array('editable'=>false));
-    $this->define("sort", "IntegerField", array('maxlength'=>3, 'default'=>0, 'widget'=>"HiddenInput", 'group'=>'advanced'));
+    $this->define("sort", "IntegerField", array('maxlength'=>3, 'default'=>0, 'widget'=>"HiddenInput"));
     $this->define("derivatives", "ManyToManyField", array('target_model'=>'Derivative', 'group'=>'relationships'));
-    
+
   }
-  
+
   public function before_save() {
     if(!$this->url) $this->url = Inflections::to_url($this->title);;
     if(!$this->image_folder) $this->url = Inflections::to_url($this->title);;
-    
+
   }
-  
+
   public function images($type="front", $show_derivative=false) {
     if(!count($this->derivatives)) return FALSE;
     if(!$show_derivative) $derivative = $this->derivatives[0];
@@ -46,9 +46,9 @@ class VehicleColour extends WaxModel{
     }
     return $file_objects;
   }
-  
-  
-  
+
+
+
 
 }
 ?>
